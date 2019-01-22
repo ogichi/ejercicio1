@@ -15,7 +15,8 @@ module.exports = {
          '../node_modules/bootstrap/dist/css/bootstrap.css'
         ],
 	appStyles: [
-	'./mystyles.css',
+  './mystyles.scss'
+  ],
  output: {
    path: path.join(basePath, 'dist'),
    filename: 'bundle.js'
@@ -40,9 +41,13 @@ module.exports = {
        },        
      },    
      {
-       test: /\.css$/,        
-       use: [MiniCssExtractPlugin.loader, "css-loader"]
-     },
+        test: /\.scss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "sass-loader",
+        ]
+      },
      {
        test: /\.(png|jpg|gif|svg)$/,
        loader: 'file-loader',
